@@ -7,6 +7,7 @@ if has('mouse')
 endif
 
 set lines=999 columns=999
+sytax on
 set ruler
 set number
 set hidden

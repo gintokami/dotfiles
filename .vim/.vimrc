@@ -1,15 +1,15 @@
 " ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
 
 set nocompatible
-execute pathogen#infect()
-
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'tpope/vim-vinegar'
 
 if has('mouse')
   set mouse=a
 endif
 
+" set lines=999 columns=999
+set background=dark
+colorscheme gruvbox "colorscheme desert
+syntax on
 set ruler
 set number
 set hidden
@@ -29,24 +29,18 @@ set undolevels=1000
 set nostartofline
 set confirm
 set shell=bash
-set autochdir
+autocmd VimEnter * set autochdir
 set clipboard=unnamed,unnamedplus
-
-set guifont=Inconsolata\ Medium\ 11
-"set guifont=Liberation\ Mono\ 9
-"set guifont=Liberation\ Mono\ Bold\ 9
-"let g:solarized_bold=0
-syntax on
-set background=light
-colorscheme solarized
+set formatoptions=l
+set lbr 
 
 set encoding=utf-8
-"set list
-"set listchars=tab:▸\ ,eol:◂
+" set list
+" set listchars=tab:▸\ ,eol:◂
 
-set colorcolumn=80
-"highlight ColorColumn ctermbg=magenta
-"call matchadd('ColorColumn', '\%79v', 100)
+" set colorcolumn=80
+" highlight ColorColumn ctermbg=magenta
+" call matchadd('ColorColumn', '\%79v', 100)
 
 map <Space> <Leader>
 "let mapleader="," 
@@ -55,71 +49,74 @@ inoremap jj <Esc>
 inoremap fj <Esc>
 inoremap jf <Esc>
 
+nnoremap Y y$
+
 nnoremap j gj
 nnoremap k gk
 
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+nnoremap Y y$
 
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \ exe "normal g`\"" |
     \ endif
 
-autocmd BufRead,BufNewFile *.html setlocal nocin
-autocmd BufRead,BufNewFile *.txt setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType xml setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType css setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
-
 set shiftround
 set autoindent
 set copyindent
 set smarttab
 set expandtab
-setlocal tabstop=4
-setlocal shiftwidth=4
-setlocal softtabstop=4
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal softtabstop=2
+
+autocmd FileType txt setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType xml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd BufRead,BufNewFile *.erb setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd BufRead,BufNewFile *.scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 set pastetoggle=<F11>
 set nobackup
 set noswapfile
-"set backupdir=~/.vim/backup//
-"set directory=~/.vim/swap//
+" set backupdir=~/.vim/backup//
+" set directory=~/.vim/swap//
 
 " Toggle spell checking on and off with `,s`
 nmap <silent> <leader>s :set spell!<CR>
+
+" pressing ,(leader)+v opens .vimrc 
+" nmap <leader>v :e $MYVIMRC<CR>
+
+" let g:syntastic_<filetype>_checkers=['<checker-name>']
+" let g:syntastic_python_checkers=['pylint']
+
+" Some filetypes, like PHP, have style checkers as well as syntax checkers. 
+" These can be chained together like this:
+" let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+" This is telling syntastic to run the php checker first, and if no errors are
+" found, run phpcs, and then phpmd.
+
+" let g:syntastic_html_checkers=['tidy', 'jshint']
+" let g:syntastic_css_checkers=['csslint']
+" let g:syntastic_javascript_checkers=['eslint']
+
+" cd /
+" set wildignore+=
+" set laststatus=4
+" set cmdheight=2
+" let b:did_indent = 1
+" let loaded_matchparen = 1
 
 " Source the vimrc file after saving it
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
-"pressing ,(leader)+v opens .vimrc 
-"nmap <leader>v :e $MYVIMRC<CR>
-
-"let g:syntastic_<filetype>_checkers=['<checker-name>']
-"let g:syntastic_python_checkers=['pylint']
-
-"Some filetypes, like PHP, have style checkers as well as syntax checkers. 
-"These can be chained together like this:
-"let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
-"This is telling syntastic to run the php checker first, and if no errors are
-"found, run phpcs, and then phpmd.
-
-let g:syntastic_html_checkers=['tidy', 'jshint']
-let g:syntastic_css_checkers=['csslint']
-let g:syntastic_javascript_checkers=['eslint']
-
 filetype plugin indent on
-
-
-
-
-"cd /
-"set wildignore+=
-"set laststatus=4
-"set cmdheight=2
-"let b:did_indent = 1
-"let loaded_matchparen = 1

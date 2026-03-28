@@ -6,7 +6,9 @@ if has('mouse')
   set mouse=a
 endif
 
-set lines=999 columns=999
+" set lines=999 columns=999
+set background=dark
+colorscheme gruvbox "colorscheme desert
 syntax on
 set ruler
 set number
@@ -31,7 +33,6 @@ autocmd VimEnter * set autochdir
 set clipboard=unnamed,unnamedplus
 set formatoptions=l
 set lbr 
-colorscheme desert
 
 set encoding=utf-8
 " set list
@@ -90,11 +91,6 @@ set noswapfile
 " Toggle spell checking on and off with `,s`
 nmap <silent> <leader>s :set spell!<CR>
 
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
-
 " pressing ,(leader)+v opens .vimrc 
 " nmap <leader>v :e $MYVIMRC<CR>
 
@@ -111,12 +107,16 @@ endif
 " let g:syntastic_css_checkers=['csslint']
 " let g:syntastic_javascript_checkers=['eslint']
 
-filetype plugin indent on
-
-""""
 " cd /
 " set wildignore+=
 " set laststatus=4
 " set cmdheight=2
 " let b:did_indent = 1
 " let loaded_matchparen = 1
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+filetype plugin indent on

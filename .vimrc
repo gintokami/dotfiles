@@ -8,7 +8,8 @@ endif
 
 " set lines=999 columns=999
 set background=dark
-colorscheme gruvbox "colorscheme desert
+" colorscheme desert
+colorscheme gruvbox
 syntax on
 set ruler
 set number
@@ -56,8 +57,6 @@ nnoremap k gk
 
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-nnoremap Y y$
-
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \ exe "normal g`\"" |
@@ -68,19 +67,9 @@ set autoindent
 set copyindent
 set smarttab
 set expandtab
-setlocal tabstop=2
-setlocal shiftwidth=2
-setlocal softtabstop=2
-
-autocmd FileType txt setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType xml setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd BufRead,BufNewFile *.erb setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd BufRead,BufNewFile *.scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 set pastetoggle=<F11>
 set nobackup
